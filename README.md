@@ -20,7 +20,7 @@
 3.	Rest API:
 - Expose the Rest API for asking query i.e. POST /query
 
-##Project
+## Project
 
 QueryMate is a powerful application that converts natural language queries into SQL statements and CSV outputs using FastAPI for the backend and Streamlit for the frontend. It allows users to interact with a SQLite database and CSV files seamlessly.
 

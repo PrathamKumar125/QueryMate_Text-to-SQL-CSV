@@ -20,32 +20,7 @@
 3.	Rest API:
 - Expose the Rest API for asking query i.e. POST /query
 
-
-### Submission Guidelines:
-1.	Git Repository:
-- Use Git for version control and commit your progress regularly.
-- Ensure the repository is well-organized with clear documentation.
-	
-2.	Code Quality:
-- Follow good coding practices, including semantic variable naming and code comments.
-- Write clean, readable, and well-structured code.
-
-3.	Documentation:
-- Provide a README file explaining your approach, challenges faced, and how to run the project.
-- Include any additional notes or comments for the evaluators.
-
-4.	Video Demonstration:
-- Record a video (max 120 seconds) showing the tool in action.
-- Explain your biggest blocker and how you overcame it during the development process.
-
-5. Time:
-- The time to submission is 3 days from the day of accepting the assignment. For any queries, reach out to anshu@procureyard.com
-
-<br>
-
-# Submission
-
-# QueryMate: Text to SQL & CSV
+##Project
 
 QueryMate is a powerful application that converts natural language queries into SQL statements and CSV outputs using FastAPI for the backend and Streamlit for the frontend. It allows users to interact with a SQLite database and CSV files seamlessly.
 

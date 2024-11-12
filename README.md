@@ -2,6 +2,8 @@
 
 ### Deployed Link
 QueryMate on Hugging Face Spaces: https://huggingface.co/spaces/pratham0011/QueryMate_Text-to-SQL-CSV
+![image](https://github.com/user-attachments/assets/7c96ea4a-9b7d-475e-8af4-afda835fdf06)
+
 
 ### Overview
 

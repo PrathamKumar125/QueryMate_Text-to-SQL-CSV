@@ -1,59 +1,57 @@
 # QueryMate_Text-to-SQL-CSV
 
-## Deployed Link: https://huggingface.co/spaces/pratham0011/QueryMate_Text-to-SQL-CSV
+### Deployed Link
+QueryMate on Hugging Face Spaces: https://huggingface.co/spaces/pratham0011/QueryMate_Text-to-SQL-CSV
 
-![image](https://github.com/user-attachments/assets/59bf8b5f-a447-4f30-8f4b-21f34927b457)
+### Overview
 
-### Implementation Steps:
+QueryMate is an application that converts natural language queries into SQL statements and CSV outputs. It uses FastAPI for the backend and Streamlit for the frontend, allowing users to interact with a SQLite database and CSV files in a seamless and user-friendly way.
 
-1.	Setup
-  - DB: Choose a SQL database with some mock tables (e.g., users, employees etc) 
-  - CSV data:Use CSVs containing mock data (e.g. sales data, inventory, etc.)
+### Implementation Steps
 
-2. Business logic:
-- Setup agents to understand DDL from different sources
-- Setup text to query conversion logic
-- Run the query and verify the expected results
-- Setup orchestrator agent to trigger the right agent based on the query passed
-- Each agent should maintain a memory of all past interactions (such as tasks given to the Task Manager Agent). Also ensure that memory is persistent, so restarting the app doesn’t lose the history.
+1. **Setup**
+   - **Database**: Use a SQL database with mock tables (e.g., users, employees).
+   - **CSV Data**: Include CSVs with mock data (e.g., sales data, inventory).
 
-3.	Rest API:
-- Expose the Rest API for asking query i.e. POST /query
+2. **Business Logic**
+   - Create agents to interpret DDL from different sources.
+   - Implement text-to-query conversion logic.
+   - Verify the query results against expected outcomes.
+   - Use an orchestrator agent to select the correct agent based on the query type.
+   - Ensure each agent maintains persistent memory to retain interaction history across app restarts.
 
-## Project
+3. **REST API**
+   - Expose a REST API endpoint for queries: `POST /query`
 
-QueryMate is a powerful application that converts natural language queries into SQL statements and CSV outputs using FastAPI for the backend and Streamlit for the frontend. It allows users to interact with a SQLite database and CSV files seamlessly.
+### Project Structure
 
-## Project Structure
-``` bash
+```bash
 .
 ├── Dockerfile  
 ├── employee.csv         # Sample CSV data  
 ├── main.py              # FastAPI backend 
-├── requirements.txt      # Python dependencies
-├── streamlit_app.py      # Streamlit frontend 
+├── requirements.txt     # Python dependencies
+├── streamlit_app.py     # Streamlit frontend 
 └── student.db           # Sample SQL data
 ```
 
-## Approach
+### Approach
 
-1. **Backend with FastAPI**: The FastAPI application (`main.py`) handles incoming queries, processes them using Google Generative AI, and returns the results in either SQL or pandas query format. It integrates with SQLite to execute SQL commands and uses pandas to process CSV data.
+1. **Backend with FastAPI**: The FastAPI backend (`main.py`) processes incoming queries, using Google Generative AI for conversions, and returns results in SQL or pandas format. It integrates with SQLite for SQL commands and pandas for CSV processing.
 
-2. **Frontend with Streamlit**: The Streamlit application (`streamlit_app.py`) provides an interactive UI for users to input queries. It communicates with the FastAPI backend, displaying results and maintaining chat history.
+2. **Frontend with Streamlit**: The Streamlit frontend (`streamlit_app.py`) provides an interactive interface for user queries, communicates with the FastAPI backend, and maintains chat history.
 
-3. **Data Storage**: Sample data is stored in `student.db` for SQL queries and `employee.csv` for CSV-based queries.
+3. **Data Storage**: Data is stored in `student.db` for SQL queries and `employee.csv` for CSV-based queries.
 
-4. **Deployment**: The application is deployed on Hugging Face Spaces, allowing users to access it easily.
+4. **Deployment**: The application is deployed on Hugging Face Spaces, accessible via the provided link.
 
-## Challenges Faced
+### Challenges Faced
 
-1. **Integration of FastAPI with Streamlit**: Ensuring smooth communication between the FastAPI backend and the Streamlit frontend was a key challenge. This involved handling asynchronous requests and ensuring the backend was running when the frontend made requests.
+1. **FastAPI and Streamlit Integration**: Ensuring smooth asynchronous communication between FastAPI and Streamlit was challenging but crucial for reliability.
+2. **Error Handling**: Robust error handling for SQL and pandas-related errors was necessary to deliver clear feedback to users.
+3. **Chat History**: Implementing persistent chat history in Streamlit enhanced user experience.
 
-2. **Error Handling**: Managing different types of errors, such as SQL errors and pandas execution errors, required robust error handling mechanisms to provide clear feedback to users.
-
-3. **Chat History Management**: Implementing chat history in Streamlit to persist through user interactions added complexity but improved user experience.
-
-## Requirements
+### Requirements
 
 - Python 3.7+
 - FastAPI
@@ -65,7 +63,7 @@ QueryMate is a powerful application that converts natural language queries into 
 - python-dotenv
 - google-generativeai
 
-## Installation
+### Installation
 
 1. Clone the repository:
 
@@ -74,11 +72,11 @@ QueryMate is a powerful application that converts natural language queries into 
    cd ai-engineer-explorer-PrathamKumar125
    ```
 
-2. Create a virtual environment and activate it:
+2. Set up a virtual environment and activate it:
 
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
    ```
 
 3. Install the required packages:
@@ -89,34 +87,38 @@ QueryMate is a powerful application that converts natural language queries into 
 
 4. Run the applications in separate terminals:
 
-   - In the first terminal, start the FastAPI backend:
-
-     ```bash
-     streamlit run streamlit_app.py
-     ```
-
-   - In the second terminal, start the Streamlit app:
+   - **FastAPI backend**: Run in one terminal:
 
      ```bash
      uvicorn main:app --reload
      ```
 
-## Running with Docker
+   - **Streamlit app**: Run in another terminal:
 
-To run the application using Docker, follow these steps:
+     ```bash
+     streamlit run streamlit_app.py
+     ```
 
-1. Build the Docker image:
+### Running with Docker
+
+To use Docker, follow these steps:
+
+1. **Build the Docker image**:
 
    ```bash
    docker build -t querymate .
    ```
 
-2. Run the Docker container:
+2. **Run the Docker container**:
 
    ```bash
    docker run -p 8501:8501 -p 8000:8000 querymate
    ```
 
-## Deployment
+3. **Pull the Docker image** from Docker Hub:
 
-You can access the deployed application here: [QueryMate on Hugging Face Spaces](https://huggingface.co/spaces/pratham0011/QueryMate_Text-to-SQL-CSV)
+   ```bash
+   docker pull prathamkumars125/querymate-text-to-sql-csv
+   ```
+
+4. **Docker Hub Repository**: https://hub.docker.com/r/prathamkumars125/querymate-text-to-sql-csv

@@ -29,7 +29,7 @@ csv_columns = get_csv_columns()
 
 sql_prompt = """
 You are an expert in converting English questions to SQL code!
-The SQL database has the name STUDENT and has the following Columns - NAME, CLASS, SECTION
+The SQL database has the name STUDENT and has the following Columns - NAME, CLASS, SECTION, Mark
 
 For example:
 - How many entries of records are present? SQL command: SELECT COUNT(*) FROM STUDENT;
